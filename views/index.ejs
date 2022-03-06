@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css">
+    <title>Redis Tasks</title>
+    <style>
+        li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="card bg-light">
+    <div class="card-body">
+        <h1 class="card-title" style="text-align: center;">REDIS APP</h1>
+    </div>
+    </div>
+      
+<div class="container">
+<br>
+<br>
+<h1><%= title %>:</h1>
+
+<form action="/task/delete" method="post">
+<% tasks.forEach((task) => {%>
+<li> 
+    <div class="d-grid gap-2">
+        <button class="btn btn-lg m-1" style="text-align: start;" type="button"> 
+            <input type="checkbox" class="form-check-input" name="tasks" value="<%= task %>">
+            <%= task %></button>
+      </div>
+   </li>
+<%})%>
+<input type="submit" value="Delete" class="btn btn-outline-danger m-3">
+</form>
+<br>
+
+
+<form action="/task/add" method="post">
+    <div class="form-group">
+        <label class="form-label mt-4">Add Task : </label>
+        <input type="text" class="form-control" name="task" placeholder="Enter Task" required>
+      </div>
+    <input type="submit" value="submit" class="m-2 btn btn-outline-primary">
+</form>
+
+<br><br>
+<h1>Next Call :</h1>
+
+<ul class="list-group">
+    <li class="list-group-item d-flex align-items-start">
+      <h3>NAME :</h3><h5 style="margin-left: 15px;"><%= user.name %></h5>
+    </li>
+    <li class="list-group-item d-flex align-items-start ">
+     <h3>COMPANY :</h3><h5 style="margin-left: 15px;"><%= user.company %></h5>
+    </li>
+    <li class="list-group-item d-flex align-items-start ">
+      <h3>PHONE :</h3><h5 style="margin-left: 15px;"><%= user.phone %></h5>
+    </li>
+    <li class="list-group-item d-flex align-items-start">
+        <h3>DATE AND TIME :</h3><h5 style="margin-left: 15px;"><%= user.datetime %></h5>
+    </li>
+  </ul>
+
+<form action="/task/nextcall" method="post">
+    <div class="form-group">
+        <label class="form-label mt-4"> Name : </label>
+    <input type="text" name="name" class="form-control" placeholder="Name">
+</div>
+    <div class="form-group">
+        <label class="form-label mt-4">Company Name : </label>
+    <input type="text" name="company" class="form-control" placeholder="Company">
+</div>
+    <div class="form-group">
+        <label class="form-label mt-4">Phone Number : </label>
+    <input type="text" name="phone" class="form-control" placeholder="Phone">
+</div>
+    <div class="form-group">
+        <label class="form-label mt-4">Date and Time : </label>
+    <input type="text" name="datetime" class="form-control" placeholder="Date and Time">
+</div>
+    <input type="submit" value="Submit" class="m-2 btn btn-outline-success">
+</form>
+</div>
+</body>
+</html>
